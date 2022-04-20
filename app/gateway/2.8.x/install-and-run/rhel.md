@@ -64,14 +64,14 @@ sudo yum install kong-{{page.kong_versions[page.version-index].ce-version}}.rpm
 
 Install the YUM repository from the command line.
 
-1. Download the Kong APT repository:
+1. Download the Kong yum repository:
     ```bash
     curl $(rpm --eval "{{ site.links.download }}/gateway-2.x-rhel-%{rhel}/config.repo") | sudo tee /etc/yum.repos.d/kong.repo
     ```
 
 2. Install Kong:
 {% capture install_from_repo %}
-{% navtabs codeblock %}
+{% navtabs_ee codeblock %}
 {% navtab Kong Gateway %}
 ```bash
 sudo yum install kong-enterprise-edition-{{page.kong_versions[page.version-index].ee-version}}
@@ -82,7 +82,7 @@ sudo yum install kong-enterprise-edition-{{page.kong_versions[page.version-index
 sudo yum install kong-{{page.kong_versions[page.version-index].ce-version}}
 ```
 {% endnavtab %}
-{% endnavtabs %}
+{% endnavtabs_ee %}
 {% endcapture %}
 
 {{ install_from_repo | indent | replace: " </code>", "</code>" }}
