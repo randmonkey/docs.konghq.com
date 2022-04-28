@@ -138,12 +138,30 @@ We only want to show the compatibility matrix if the strategy = matrix (which is
 
 <div class="page page-extension-profile">
   {% if page.header_icon or page.header_title %}
-    {% include_cached header.html is_latest=page.is_latest id=page.id url=page.url breadcrumbs=page.breadcrumbs type=extn_type name=page.header_title img=page.header_icon plus=page.plus enterprise=page.enterprise publisher=page.publisher extn_filename=extn_filename extn_versions=extn_versions extn_publisher=extn_publisher extn_slug=extn_slug %}
+    {% assign page_title = page.header_title %}
+    {% assign page_icon = page.header_icon %}
   {% elsif page.type == concept %}
-    {% include_cached header.html is_latest=page.is_latest id=page.id url=page.url breadcrumbs=page.breadcrumbs name=page.title img=page.header_icon plus=page.plus enterprise=page.enterprise publisher=page.publisher extn_filename=extn_filename extn_versions=extn_versions extn_publisher=extn_publisher extn_slug=extn_slug %}
+    {% assign page_title = page.title %}
+    {% assign page_icon = page.header_icon %}
   {% else %}
-    {% include_cached header.html is_latest=page.is_latest id=page.id url=page.url breadcrumbs=page.breadcrumbs name=page.name img=extn_icon plus=page.plus enterprise=page.enterprise publisher=page.publisher extn_filename=extn_filename extn_versions=extn_versions extn_publisher=extn_publisher extn_slug=extn_slug %}
+    {% assign page_title = page.name %}
+    {% assign page_icon = extn_icon %}
   {% endif %}
+  {% include_cached header.html
+     is_latest=page.is_latest
+     id=page.id
+     url=page.url
+     breadcrumbs=page.breadcrumbs
+     name=page_title
+     img=page_icon
+     plus=page.plus
+     enterprise=page.enterprise
+     publisher=page.publisher
+     extn_filename=extn_filename
+     extn_versions=extn_versions
+     extn_publisher=extn_publisher
+     extn_slug=extn_slug
+     type=extn_type %}
 
   <div class="container">
 
