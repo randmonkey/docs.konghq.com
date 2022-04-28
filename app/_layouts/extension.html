@@ -7,14 +7,13 @@ breadcrumbs:
 
 ---
 
-{% unless page.type == "concept" %}
-{% if page.type == "plugin" %}
-
-
 {% assign path_array = page.path | split: "/" %}
 {% assign extn_slug = path_array[2] %}
 {% assign extn_publisher = path_array[1] %}
 {% assign extn_data = site.data.extensions[extn_publisher][extn_slug] %}
+
+{% unless page.type == "concept" %}
+{% if page.type == "plugin" %}
 
 {% capture params_table %}
 <table>
